@@ -40,7 +40,7 @@ module.exports = async ({ getNamedAccounts, deployments, network }) => {
     try {
 
 
-        console.log('deployer network=', network.name);
+        console.log('\x1b[31m%s\x1b[0m','3. root deployer network=', network.name);
         initialize(network);
 
 
@@ -63,11 +63,11 @@ module.exports = async ({ getNamedAccounts, deployments, network }) => {
             console.log('rootResult.address=', rootResult.address)
 
             deployResult[Root_SourceName] = {
-                contentHash: deployUtilInstance.check(Root_SourceName).contentHash,
+                contentHash: rootResult.transactionHash,
                 address: rootResult.address,
                 args: rootArgs
             }
-            console.log(`Setting final owner of root node on registry`);
+            console.log(` Setting final owner of root node on registry`);
 
             const setOwnerTx = await ensRegistryContract.setOwner(ZERO_HASH, rootResult.address, { from: deployer });
             console.log(`【设置根域名owner到根合约】Setting final owner of root node on registry (tx:${setOwnerTx.hash})...`);
@@ -75,11 +75,11 @@ module.exports = async ({ getNamedAccounts, deployments, network }) => {
             await setOwnerTx.wait();
 
             const rootContract = await ethers.getContractAt('Root', deployResult[Root_SourceName].address);
-            let temp = await rootContract.controllers(owner)
-            console.log('controller=', temp)
+            // let temp = await rootContract.controllers(owner)
+            // console.log('controller=', temp)
             if (!await rootContract.controllers(owner)) {
                 setControllerTx = await rootContract.connect(await ethers.getSigner(owner)).setController(owner, true);
-                console.log(`Setting final owner as controller on root contract (tx: ${setControllerTx.hash})...`);
+                console.log(` Setting final owner as controller on root contract (tx: ${setControllerTx.hash})...`);
                 await setControllerTx.wait();
             }
 
@@ -106,9 +106,7 @@ module.exports = async ({ getNamedAccounts, deployments, network }) => {
             const setSubnodeOwnerTx2 = await rootContract.connect(await ethers.getSigner(owner)).setSubnodeOwner('0x' + keccak256('reverse'), owner)
             console.log(`【设置.reverse一级域名的owner到根合约】Setting owner of .reverse to owner on root (tx: ${setSubnodeOwnerTx2.hash})...`)
             await setSubnodeOwnerTx2.wait()
-
-
-
+ 
         }
 
         //@todo
@@ -130,6 +128,6 @@ module.exports = async ({ getNamedAccounts, deployments, network }) => {
 
 };
 
-module.exports.tags = ['root'];
 module.exports.id = "root";
+module.exports.tags = ['root'];
 module.exports.dependencies = ['core', 'base'];

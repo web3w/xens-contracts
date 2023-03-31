@@ -3,8 +3,16 @@ require('@nomiclabs/hardhat-truffle5');
 require("hardhat-abi-exporter");
 require("hardhat-deploy");
 require("hardhat-deploy-ethers");
+require('hardhat-gas-reporter');
+const { accounts } = require("../secrets.json");
+
+
+const accountList = [
+  accounts["0x36B1a29E0bbD47dFe9dcf7380F276e86da90c4c2"],
+  accounts["0x6E339d654815c6d79727f1b94b77d85863eB3659"]
+]
 real_accounts = undefined;
-if(process.env.OWNER_KEY) {
+if (process.env.OWNER_KEY) {
   real_accounts = [process.env.OWNER_KEY];
 }
 
@@ -21,6 +29,9 @@ module.exports = {
         },
       },
     ],
+  },
+  gasReporter: {
+    enabled: true  // 启用 gasReporter 插件
   },
   abiExporter: {
     path: './build/contracts',

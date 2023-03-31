@@ -1,8 +1,8 @@
 module.exports = {
     domainConfig: {
-        baseNodeDomain: 'buidlerdao',
-        name: 'buildlerdao name service',
-        symbol: 'BUILDLERDAO',
+        baseNodeDomain: 'trader',
+        name: 'TraderDao name service',
+        symbol: 'TraderDao',
         basePrice: 10000 // wei
     }
 }

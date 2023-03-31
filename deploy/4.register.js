@@ -28,7 +28,7 @@ module.exports = async ({ getNamedAccounts, deployments, network }) => {
     try {
 
 
-        console.log('deployer network=', network.name);
+        console.log('\x1b[31m%s\x1b[0m','4. register controller deployer network=', network.name);
         initialize(network);
 
 
@@ -48,14 +48,13 @@ module.exports = async ({ getNamedAccounts, deployments, network }) => {
                 log: true,
             });
             deployResult[ETHRegistrarController_SourceName] = {
-                contentHash: deployUtilInstance.check(ETHRegistrarController_SourceName).contentHash,
+                contentHash: ethRegistrarControllerResult.transactionHash,
                 address: ethRegistrarControllerResult.address,
                 args: ethRegistrarControllerResultArgs
             }
         }
-
-     
-    
+ 
+        // addController
         const registrarAddress = deployResult[BaseRegistrarImplementation_SourceName].address;
         const baseRegistrarImplementationContract =
             await ethers.getContractAt('BaseRegistrarImplementation', registrarAddress);
@@ -82,6 +81,6 @@ module.exports = async ({ getNamedAccounts, deployments, network }) => {
 
 };
 
-module.exports.tags = ['register'];
 module.exports.id = "register";
+module.exports.tags = ['register'];
 module.exports.dependencies = ['core','root','base'];

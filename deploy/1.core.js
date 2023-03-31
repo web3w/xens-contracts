@@ -33,9 +33,7 @@ const initialize = (network) => {
 module.exports = async ({ getNamedAccounts, deployments, network }) => {
 
     try {
-
-    
-    console.log('deployer network=', network.name);
+    console.log('\x1b[31m%s\x1b[0m','1. core deployer network', network.name);
     initialize(network);
 
 
@@ -44,6 +42,11 @@ module.exports = async ({ getNamedAccounts, deployments, network }) => {
     const { deployer, owner } = await getNamedAccounts();
 
     // console.log(`deployer=${deployer}, owner=${owner}`)
+    // 1.ENSRegistry 
+    // 2.DefaultReverseResolver 
+    // 3.ReverseRegistrar 
+    // 4.PublicResolver
+ 
     console.log('\n【部署核心注册表合约】 STEP [1] --->  ensAddress = deploy ENSRegistry()')
 
     if (!deployUtilInstance.check(ENSRegistry_SourceName).address) {
@@ -52,10 +55,14 @@ module.exports = async ({ getNamedAccounts, deployments, network }) => {
             args: [],
             log: true,
         });
+
+        // const contentHash = deployUtilInstance.check(ENSRegistry_SourceName).contentHash
         console.log('ensRegistryResult.address=', ensRegistryResult.address)
 
+        // return
+
         deployResult[ENSRegistry_SourceName] = {
-            contentHash: deployUtilInstance.check(ENSRegistry_SourceName).contentHash,
+            contentHash:ensRegistryResult.transactionHash,
             address: ensRegistryResult.address,
             args: []
         }
@@ -71,9 +78,9 @@ module.exports = async ({ getNamedAccounts, deployments, network }) => {
             log: true,
         });
         console.log('defaultReverseResolverResult.address=', defaultReverseResolverResult.address)
-
+ 
         deployResult[DefaultReverseResolver_SourceName] = {
-            contentHash: deployUtilInstance.check(DefaultReverseResolver_SourceName).contentHash,
+            contentHash: defaultReverseResolverResult.transactionHash,
             address: defaultReverseResolverResult.address,
             args: defaultReverseResolverArgs
         }
@@ -91,7 +98,7 @@ module.exports = async ({ getNamedAccounts, deployments, network }) => {
         console.log('reverseRegistrarResult.address=', reverseRegistrarResult.address)
 
         deployResult[ReverseRegistrar_SourceName] = {
-            contentHash: deployUtilInstance.check(ReverseRegistrar_SourceName).contentHash,
+            contentHash: reverseRegistrarResult.transactionHash,
             address: reverseRegistrarResult.address,
             args: reverseRegistrarArgs
         }
@@ -108,7 +115,7 @@ module.exports = async ({ getNamedAccounts, deployments, network }) => {
         console.log('publicResolverResult.address=', publicResolverResult.address)
 
         deployResult[PublicResolver_SourceName] = {
-            contentHash: deployUtilInstance.check(PublicResolver_SourceName).contentHash,
+            contentHash: publicResolverResult.transactionHash,
             address: publicResolverResult.address,
             args: publicResolverArgs
         }
@@ -123,5 +130,6 @@ module.exports = async ({ getNamedAccounts, deployments, network }) => {
 
 };
 
-module.exports.tags = ['core'];
 module.exports.id = "core";
+module.exports.tags = ['core'];
+

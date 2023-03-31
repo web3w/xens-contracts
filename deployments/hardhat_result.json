@@ -1,18 +1,18 @@
 {
   "contracts/registry/ENSRegistry.sol": {
-    "contentHash": "",
+    "contentHash": "0xd29bc9c66780fd7f58538f00f9e0f65dd929ee2bd3dfbe873521a4891a9453cb",
     "address": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
     "args": []
   },
   "contracts/resolvers/DefaultReverseResolver.sol": {
-    "contentHash": "",
+    "contentHash": "0xf5cb5092fe1c732a1afcd2886060be148dbb7e6d759eb9f65afb98417072fccf",
     "address": "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
     "args": [
       "0x5FbDB2315678afecb367f032d93F642f64180aa3"
     ]
   },
   "contracts/registry/ReverseRegistrar.sol": {
-    "contentHash": "",
+    "contentHash": "0x7aed434a930f4483abe224acd3f449540f506468958f59b3a24920f96ccbef3f",
     "address": "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0",
     "args": [
       "0x5FbDB2315678afecb367f032d93F642f64180aa3",
@@ -20,53 +20,40 @@
     ]
   },
   "contracts/resolvers/PublicResolver.sol": {
-    "contentHash": "",
+    "contentHash": "0xced68f83f008c77f060a78e0e3485daa2c455c7c9876b416d55a7becc4f58573",
     "address": "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9",
     "args": [
       "0x5FbDB2315678afecb367f032d93F642f64180aa3"
     ]
   },
   "contracts/ethregistrar/BaseRegistrarImplementation.sol": {
-    "contentHash": "",
+    "contentHash": "0x302b6e22a9baf74b44be4c931cb5d307d191adaa6c8aaeca67342c491ac37335",
     "address": "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9",
     "args": [
-      "buildlerdao name service",
-      "BUILDLERDAO",
+      "TraderDao name service",
+      "TraderDao",
       "0x5FbDB2315678afecb367f032d93F642f64180aa3",
-      "0xf4f740d56f576b63f57a508b18a60c24ab864b4afd50efaaeecca234babce5f5",
-      "buidlerdao"
+      "0x75879c1871df9d2ac67eb0f15dcda83e13fbca4e25fea12b86d1cca00625229e",
+      "trader"
     ]
   },
   "contracts/ethregistrar/TokenURIBuilder.sol": {
-    "contentHash": "",
-    "address": "0x5FC8d32690cc91D4c39d9d3abcBD16989F875707",
+    "contentHash": "0xcd551f56058761bb0fc71559dae69a9a4c36f24bc4b7f9cacbea5057b339bf25",
+    "address": "0x0165878A594ca255338adfa4d48449f69242Eb8F",
     "args": [
       "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9"
     ]
   },
-  "contracts/ethregistrar/StableLogicControl.sol": {
-    "contentHash": "7c43cf735e5c3d2765d27d46f0f250fb",
-    "address": "0xa513E6E4b8f2a923D98304ec87F64353C4D5C853",
-    "args": [
-      [
-        25367833587,
-        25367833587,
-        25367833587,
-        25367833587,
-        15854895992
-      ]
-    ]
-  },
   "contracts/root/Root.sol": {
-    "contentHash": "",
-    "address": "0xa513E6E4b8f2a923D98304ec87F64353C4D5C853",
+    "contentHash": "0xadac1cb7676ad6b0ed7ecc804c1c52c2c80a9c847b971ba3e69a21230f2cfeab",
+    "address": "0x2279B7A0a67DB372996a5FaB50D91eAA73d2eBe6",
     "args": [
       "0x5FbDB2315678afecb367f032d93F642f64180aa3"
     ]
   },
   "contracts/ethregistrar/ETHRegistrarController.sol": {
-    "contentHash": "",
-    "address": "0x9A676e781A523b5d0C0e43731313A708CB607508",
+    "contentHash": "0x10e5dab0fbcb5bc7b0056a8e28d593338fad0e3469c67f57e4eb289f62162b00",
+    "address": "0x0B306BF915C4d645ff596e518fAf3F9669b97016",
     "args": [
       "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9",
       10000,

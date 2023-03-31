@@ -17,7 +17,7 @@ contract TokenURIBuilder {
     }
 
 
-    function formatName(string memory name) private view returns(string memory) {
+    function formatName(string memory name) private pure returns(string memory) {
         uint len = name.strlen();
         if(len >= 20) {
             string memory x = name.substring(0, 19);
